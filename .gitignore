@@ -5,4 +5,8 @@ __pycache__
 # IDE-specific files
 .idea
 !.idea/runConfigurations
+<<<<<<< HEAD
 !.idea/runConfigurations/*_
+=======
+!.idea/runConfigurations/*
+>>>>>>> 6cbe927f8a212a4e61157367038383f3d74c7a00
