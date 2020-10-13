@@ -34,9 +34,9 @@
 
     <!-- Leaflet JS -->
     <script>
-        var map_center = 
-            -73.964285, // Longitude
-	    40.782091 // Latitude
+        var map_center = [
+            40.782091,  // Latitude
+            -73.964285  // Longitude
         ];
         var zoom_level = 14;
         var map = L.map('map').setView(map_center, zoom_level);
@@ -51,8 +51,8 @@
         <!-- L.Icon.Default.prototype.options.shadowSize = 15; -->
         <!-- L.Icon.Default.prototype.options.shadowAnchor = [0, 0]; -->
 
-        {% for sighting in sightings %}
-          var point_lat_lon = [{{ sighting.longitude }}, {{ sighting.latitude }}];
+        {% for sighting in squirrels %}
+          var point_lat_lon = [{{ sighting.latitude }}, {{ sighting.longitude }}];
           var marker = L.marker(point_lat_lon).addTo(map);
         {% endfor %}
     </script>
