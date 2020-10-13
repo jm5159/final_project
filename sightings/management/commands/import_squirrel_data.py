@@ -1,6 +1,7 @@
 from django.core.management.base import BaseCommand
 from django.utils import timezone
 from sightings.models import Squirrel
+import csv
 
 class Command(BaseCommand):
     def add_arguments(self, parser):
@@ -13,14 +14,14 @@ class Command(BaseCommand):
         for dict_ in data:
             squirrels.append(Squirrel(
                 latitude=dict_['X'],
-                longtitude=dict_['Y'],
-                squirrel_id=dict_['Unique Squirrel ID'],
+                longitude=dict_['Y'],
+                unique_squirrel_id=dict_['Unique Squirrel ID'],
                 shift=dict_['Shift'],
-                date=timezone.datetime.strptime(dict_['Date'], '%m%d%Y').date(),
+                date=dict_['Date'],
                 age=dict_['Age'],
                 primary_fur_color=dict_['Primary Fur Color'],
-                highlight_fur_color = dict_['Hightlight_Fur_Color'],
-                location = dict_['Location'],
+                highlight_fur_color=dict_['Highlight Fur Color'],
+                location=dict_['Location'],
                 specific_location=dict_['Specific Location'],
                 running=True if dict_['Running'].lower() == 'true' else False,
                 chasing=True if dict_['Chasing'].lower() == 'true' else False,
@@ -37,5 +38,4 @@ class Command(BaseCommand):
                 indifferent=True if dict_['Indifferent'].lower() == 'true' else False,
                 runs_from=True if dict_['Runs from'].lower() == 'true' else False,
             ))
-        Squirrel.objects.bulk_create(squirrels)
-~                                     
+        Squirrel.objects.bulk_create(squirrels)                                     
