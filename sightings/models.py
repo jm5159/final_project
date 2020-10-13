@@ -2,9 +2,8 @@ from django.db import models
 
 class Squirrel(models.Model):
     latitude = models.FloatField(null=False, blank=False)
-    longtitude = models.FloatField(null=False, blank=False)
-    squirrel_id = models.CharField(max_length=100,unique=True,null=False, blank=False)
-
+    longitude = models.FloatField(null=False, blank=False)
+    unique_squirrel_id = models.CharField(max_length=100,null=False, blank=False)
     AM = 'AM'
     PM = 'PM'
     OTHER = ''
@@ -19,10 +18,10 @@ class Squirrel(models.Model):
             default = OTHER,
             )
 
-    date = models.CharField(max_length = 20,blank=True)
+    date = models.CharField(max_length=20,blank=True)
     age = models.CharField(max_length=5,blank=True)
-    primary_fur_color = models.CharField(max_length=20,blank=True)
-    highlight_fur_color = models.CharField(max_length=20,blank=True)
+    primary_fur_color = models.CharField(max_length=50,blank=True)
+    highlight_fur_color = models.CharField(max_length=50,blank=True)
     location = models.CharField(max_length=50,blank=True)
     specific_location=models.CharField(max_length=50,  blank=True)
     running = models.BooleanField()
@@ -41,5 +40,5 @@ class Squirrel(models.Model):
     runs_from = models.BooleanField()
 
     def __str__(self):
-        return self.squirrel_id
+        return self.unique_squirrel_id
 # Create your models here.
