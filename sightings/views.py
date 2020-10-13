@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from .models import Squirrel
 
 def map(request):
-    squirrels = Squirrel.objects.all()[:75]
+    squirrels = Squirrel.objects.all()[:100]
     context = {'squirrels': squirrels}
     return render(request, 'sightings/map.html', context)
 

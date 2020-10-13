@@ -18,7 +18,7 @@ class Squirrel(models.Model):
             default = OTHER,
             )
 
-    date = models.CharField(max_length=20,blank=True)
+    date = models.DateField(null=True,blank=True)
     age = models.CharField(max_length=5,blank=True)
     primary_fur_color = models.CharField(max_length=50,blank=True)
     location = models.CharField(max_length=50,blank=True)

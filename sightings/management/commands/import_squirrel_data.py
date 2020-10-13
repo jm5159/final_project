@@ -17,7 +17,7 @@ class Command(BaseCommand):
                 longitude=dict_['Y'],
                 unique_squirrel_id=dict_['Unique Squirrel ID'],
                 shift=dict_['Shift'],
-                date=dict_['Date'],
+                date=dict_['Date'][4:8]+'-'+ dict_['Date'][0:2]+'-'+ dict_['Date'][2:4],
                 age=dict_['Age'],
                 primary_fur_color=dict_['Primary Fur Color'],
                 location=dict_['Location'],
