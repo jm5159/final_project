@@ -4,7 +4,10 @@ from django.http import HttpResponse
 from .models import Squirrel
 
 def map(request):
-    return HttpResponse('Map')
+    context={
+        sightings:[{latitude:-73.9561344937861 , longitude:40.7940823884086}]
+            }
+    return render(request, 'map/map.html', context)
 
 def sightings(request):
     return HttpResponse('Sightings')
