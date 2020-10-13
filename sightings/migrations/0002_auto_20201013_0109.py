@@ -12,11 +12,6 @@ class Migration(migrations.Migration):
     operations = [
         migrations.RenameField(
             model_name='squirrel',
-            old_name='highlight_fur_color',
-            new_name='highlight_fur_color',
-        ),
-        migrations.RenameField(
-            model_name='squirrel',
             old_name='longitude',
             new_name='longitude',
         ),

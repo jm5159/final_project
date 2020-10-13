@@ -20,7 +20,6 @@ class Command(BaseCommand):
                 date=dict_['Date'],
                 age=dict_['Age'],
                 primary_fur_color=dict_['Primary Fur Color'],
-                highlight_fur_color=dict_['Highlight Fur Color'],
                 location=dict_['Location'],
                 specific_location=dict_['Specific Location'],
                 running=True if dict_['Running'].lower() == 'true' else False,
