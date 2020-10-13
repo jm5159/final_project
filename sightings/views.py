@@ -8,6 +8,7 @@ def map(request):
     context = {'squirrels': squirrels}
     return render(request, 'map/map.html', context)
 
+
 def sightings(request):
     return HttpResponse('Sightings')
 
