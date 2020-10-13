@@ -6,6 +6,7 @@ from .models import Squirrel
 def map(request):
     return HttpResponse('Map')
 
+
 def sightings(request):
     return HttpResponse('Sightings')
 
