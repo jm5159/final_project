@@ -18,6 +18,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='squirrel',
             name='unique_squirrel_id',
-            field=models.CharField(max_length=100, unique=True),
+            field=models.CharField(max_length=100),
         ),
     ]
