@@ -10,10 +10,14 @@ def map(request):
 
 
 def sightings(request):
-    return HttpResponse('Sightings')
+    squirrels = Squirrel.objects.all()
+    context = {'squirrels': squirrels}
+    return render(request, 'sightings/sightings.html', context)
 
 def index(request):
-    return HttpResponse('Home Index Page')
+    squirrels = Squirrel.objects.all()
+    context = {'squirrels': squirrels}
+    return render(request, 'sightings/base.html', context)
 
 def detail(request):
     return HttpResponse('detail')
