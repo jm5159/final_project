@@ -20,11 +20,33 @@ def index(request):
     return render(request, 'sightings/base.html', context)
 
 def detail(request):
-    return HttpResponse('detail')
+    return HttpResponse('detail' )
 
 def add(request):
     return HttpResponse('add')
 
 def stat(request):
     return HttpResponse('stat')
+
+def request_update(request):
+    if request.method == 'POST':
+        form = UpdateForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return JsonResponse({})
+        else:
+            return JsonResponse({'errors': form.errors}, status=400)
+
+    return JsonResponse({})
+
+def request_add(request):
+    if request.method == 'POST':
+        form = AddForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return JsonResponse({})
+        else:
+            return JsonResponse({'errors': form.errors}, status=400)
+
+    return JsonResponse({})
 # Create your views here.
