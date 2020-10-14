@@ -3,7 +3,7 @@ from django.db import models
 class Squirrel(models.Model):
     latitude = models.FloatField(null=False, blank=False)
     longitude = models.FloatField(null=False, blank=False)
-    unique_squirrel_id = models.CharField(max_length=100,null=False, blank=False)
+    unique_squirrel_id = models.CharField(max_length=100,unique=True,null=False, blank=False)
     AM = 'AM'
     PM = 'PM'
     OTHER = ''
