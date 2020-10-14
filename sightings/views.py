@@ -22,7 +22,7 @@ def index(request):
     return render(request, 'sightings/base.html', context)
 
 def detail(request, unique_squirrel_id):
-    squirrel = get_object_or_404(Squirrel, pk=unique_squirrel_id)
+    squirrel = Squirrel.objects.get(unique_squirrel_id=unique_squirrel_id)
     context = {
         'squirrel': squirrel,
     }
