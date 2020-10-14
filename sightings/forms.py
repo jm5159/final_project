@@ -8,7 +8,6 @@ class AddRequestForm(ModelForm):
         model = Squirrel
         # All other fields are handled in the background
         fields = '__all__'
-        labels = {"unique_squirrel_id": "Unique_squirrel_id[Hectare-Shift-Date(%m%d)-Squirrel Number]"}
 
 
 class UpdateRequestForm(ModelForm):
