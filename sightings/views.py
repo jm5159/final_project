@@ -3,7 +3,14 @@ from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect
 from django.db.models import Avg, Max, Min, Count
 from .models import Squirrel
+from .forms import AddRequestForm
 from .forms import UpdateRequestForm
+
+
+def index(request):
+    squirrels = Squirrel.objects.all()
+    context = {'squirrels': squirrels}
+    return render(request, 'sightings/home.html', context)
 
 def map(request):
     squirrels = Squirrel.objects.all()[:100]
@@ -16,16 +23,9 @@ def sightings(request):
     context = {'squirrels': squirrels}
     return render(request, 'sightings/sightings.html', context)
 
-def index(request):
-    squirrels = Squirrel.objects.all()
-    context = {'squirrels': squirrels}
-    return render(request, 'sightings/base.html', context)
 
 def detail(request, unique_squirrel_id):
-    squirrel = Squirrel.objects.get(unique_squirrel_id=unique_squirrel_id)
-    context = {
-        'squirrel': squirrel,
-    }
+    squirrel = Squirrel.objects.get(unique_squirrel_id = unique_squirrel_id)
     if request.method == "POST":
         form = UpdateRequestForm(request.POST, instance = squirrel)
         if form.is_valid():
@@ -35,34 +35,16 @@ def detail(request, unique_squirrel_id):
         form = UpdateRequestForm(instance = squirrel)
     return render(request, 'sightings/detail.html', {'form': form, 'unique_squirrel_id':unique_squirrel_id})
 
-    
-    
-
-
 def add(request):
-    return HttpResponse('add')
-
-def request_update(request):
-    if request.method == 'POST':
-        form = UpdateForm(request.POST)
+    if request.method == "POST":
+        form = AddRequestForm(request.POST)
         if form.is_valid():
             form.save()
-            return JsonResponse({})
-        else:
-            return JsonResponse({'errors': form.errors}, status=400)
-
-    return JsonResponse({})
-
-def request_add(request):
-    if request.method == 'POST':
-        form = AddForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return JsonResponse({})
-        else:
-            return JsonResponse({'errors': form.errors}, status=400)
-
-    return JsonResponse({})
+            return redirect('/sightings/add')
+    else:
+        form = AddRequestForm()
+    return render(request, 'sightings/add.html', {'form':form})
+    
 
 def stats(request):
     squirrels = Squirrel.objects.all()
@@ -82,7 +64,4 @@ def stats(request):
             }
 
     return render(request, 'sightings/stats.html', context)
-  
-# Create your views here.
-
 
