@@ -5,55 +5,22 @@
 {% block title %} - {{ squirrel.unique_squirrel_id }}{% endblock %}
 
 {% block main %}
-<div class="album py-5 bg-light">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-      </div>
-      <div class="col-md-8">
-        <div class="card mb-8 shadow-sm">
-          <div class="card-body">
-            <p class="card-text">
-            <div class="pet-name">
-              <strong>{{ squirrel.latitude }}</strong>
-            </div>
-            <div>
-              <span class="text-muted font-italic">Breed:</span>
-              <span>
-                    {{ squirrel.longitude }}
-                  </span>
-            </div>
-            <div>
-              <span class="text-muted font-italic">Sex:</span>
-              <span>
-                    {{ squirrel.unique_squirrel_id }}
-                  </span>
-            </div>
-            <div>
-              <span class="text-muted font-italic">Birthday:</span>
-              <span>
-                    {{ squirrel.shift }}
-                  </span>
-            </div>
-            <div>
-              <span class="text-muted font-italic">First thing people notice about me is...</span>
-              <span>
-                    {{ squirrel.date }}
-                  </span>
-            </div>
-            <div>
-              <span class="text-muted font-italic">On a typical Friday night I am...</span>
-              <span>
-                    {{ squirrel.age }}
-                  </span>
-            </div>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<h1 text-align:center>Create a New Sighting</h1>
+
+<div class='topnav'>
+    <a href="/sightings/">Skim Through All Sightings</a>
+    <a href="/sightings/add/">Add New Sightings</a>
+    <a href="/sightings/stats/">General Stats About Sightings</a>
 </div>
-{% endblock %}
+<p>
+<form action="" method="post">{% csrf_token %}
+    <table align="center">{{ form }}</table>
+    <br>
+    <div class="button">
+        <input type="submit" class='button' value="Submit" style="height:100px;width:100px">
+    </div>
+</form>
+
+</p>{% endblock %}
 {% block extra_footer %}
 {% endblock %}

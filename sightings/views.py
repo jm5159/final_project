@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 from django.db.models import Avg, Max, Min, Count
 from .models import Squirrel
 from .forms import UpdateRequestForm
@@ -26,7 +26,18 @@ def detail(request, unique_squirrel_id):
     context = {
         'squirrel': squirrel,
     }
-    return render(request, 'sightings/detail.html', context)
+    if request.method == "POST":
+        form = UpdateRequestForm(request.POST, instance = squirrel)
+        if form.is_valid():
+            form.save()
+            return redirect('/sightings/')
+    else:
+        form = UpdateRequestForm(instance = squirrel)
+    return render(request, 'sightings/detail.html', {'form': form, 'unique_squirrel_id':unique_squirrel_id})
+
+    
+    
+
 
 def add(request):
     return HttpResponse('add')
@@ -73,4 +84,5 @@ def stats(request):
     return render(request, 'sightings/stats.html', context)
   
 # Create your views here.
+
 
