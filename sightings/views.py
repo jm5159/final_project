@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect
 from django.db.models import Avg, Max, Min, Count
 from .models import Squirrel
+from .forms import AddRequestForm
 from .forms import UpdateRequestForm
 
 
@@ -36,12 +37,12 @@ def detail(request, unique_squirrel_id):
 
 def add(request):
     if request.method == "POST":
-        form = UpdateRequestForm(request.POST)
+        form = AddRequestForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('/sightings/add')
     else:
-        form = UpdateRequestForm()
+        form = AddRequestForm()
     return render(request, 'sightings/add.html', {'form':form})
     
 
