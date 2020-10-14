@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-
+from django.db.models import Avg, Max, Min, Count
 from .models import Squirrel
 
 def map(request):
@@ -25,6 +25,22 @@ def detail(request):
 def add(request):
     return HttpResponse('add')
 
-def stat(request):
-    return HttpResponse('stat')
+def stats(request):
+    squirrels = Squirrel.objects.all()
+    total = Squirrel.objects.count()
+    avg_lat = squirrels.aggregate(Avg('latitude'))
+    avg_long = squirrels.aggregate(Avg('longitude'))
+    climbing= list(squirrels.values_list('climbing').annotate(Count('climbing')))
+    chasing = list(squirrels.values_list('chasing').annotate(Count('chasing')))
+    age = list(squirrels.values_list('age').annotate(Count('age')))
+    context = {
+            'total':total,
+            'avg_lat':avg_lat,
+            'avg_long':avg_long,
+            'climbing':climbing,
+            'chasing':chasing,
+            'age':age,
+            }
+
+    return render(request, 'sightings/stats.html', context)
 # Create your views here.
