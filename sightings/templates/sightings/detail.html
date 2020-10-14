@@ -1,0 +1,59 @@
+{% extends 'sightings/base.html' %}
+
+{% load static %}
+
+{% block title %} - {{ squirrel.unique_squirrel_id }}{% endblock %}
+
+{% block main %}
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+      </div>
+      <div class="col-md-8">
+        <div class="card mb-8 shadow-sm">
+          <div class="card-body">
+            <p class="card-text">
+            <div class="pet-name">
+              <strong>{{ squirrel.latitude }}</strong>
+            </div>
+            <div>
+              <span class="text-muted font-italic">Breed:</span>
+              <span>
+                    {{ squirrel.longitude }}
+                  </span>
+            </div>
+            <div>
+              <span class="text-muted font-italic">Sex:</span>
+              <span>
+                    {{ squirrel.unique_squirrel_id }}
+                  </span>
+            </div>
+            <div>
+              <span class="text-muted font-italic">Birthday:</span>
+              <span>
+                    {{ squirrel.shift }}
+                  </span>
+            </div>
+            <div>
+              <span class="text-muted font-italic">First thing people notice about me is...</span>
+              <span>
+                    {{ squirrel.date }}
+                  </span>
+            </div>
+            <div>
+              <span class="text-muted font-italic">On a typical Friday night I am...</span>
+              <span>
+                    {{ squirrel.age }}
+                  </span>
+            </div>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block extra_footer %}
+{% endblock %}

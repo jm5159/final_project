@@ -1,11 +1,11 @@
 from django.forms import ModelForm
 
-from .models import AdoptRequest
+from .models import Squirrel
 
 
-class AdoptRequestForm(ModelForm):
+class UpdateRequestForm(ModelForm):
     class Meta:
-        model = AdoptRequest
+        model = Squirrel
         # All other fields are handled in the background
         fields = [
             'longitude',
@@ -15,3 +15,6 @@ class AdoptRequestForm(ModelForm):
             'date',
             'age'
         ]
+
+
+

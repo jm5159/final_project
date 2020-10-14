@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.shortcuts import get_object_or_404
 
 from .models import Squirrel
+from .forms import UpdateRequestForm
 
 def map(request):
     squirrels = Squirrel.objects.all()[:100]
@@ -19,8 +21,12 @@ def index(request):
     context = {'squirrels': squirrels}
     return render(request, 'sightings/base.html', context)
 
-def detail(request):
-    return HttpResponse('detail' )
+def detail(request, unique_squirrel_id):
+    squirrel = get_object_or_404(Squirrel, pk=unique_squirrel_id)
+    context = {
+        'squirrel': squirrel,
+    }
+    return render(request, 'sightings/detail.html', context)
 
 def add(request):
     return HttpResponse('add')
@@ -50,3 +56,4 @@ def request_add(request):
 
     return JsonResponse({})
 # Create your views here.
+
