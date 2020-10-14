@@ -1,0 +1,23 @@
+{% extends 'sightings/base.html' %}
+
+{% load static %}
+
+{% block title %}Stats of squirrels{% endblock %}
+
+{% block main %}
+<h1>Stats of Squirrels</h1>
+<br>
+<ul>
+  <li>Total of observations: {{ total }}</li>
+  <br>
+  <li>Average longitude: {{ avg_long }}</li>
+  <br>
+  <li>Average latitude: {{ avg_lat }}</li>
+  <br>
+  <li>age: {{ age }}</li>
+  <br>
+  <li>climbing: {{ climbing }}</li>
+  <br>
+  <li>chasing: {{ chasing }}</li>
+</ul>
+{% endblock %}
