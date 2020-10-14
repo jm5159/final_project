@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.shortcuts import get_object_or_404
 from django.db.models import Avg, Max, Min, Count
 from .models import Squirrel
+from .forms import UpdateRequestForm
 
 def map(request):
     squirrels = Squirrel.objects.all()[:100]
@@ -19,11 +21,37 @@ def index(request):
     context = {'squirrels': squirrels}
     return render(request, 'sightings/base.html', context)
 
-def detail(request):
-    return HttpResponse('detail')
+def detail(request, unique_squirrel_id):
+    squirrel = Squirrel.objects.get(unique_squirrel_id=unique_squirrel_id)
+    context = {
+        'squirrel': squirrel,
+    }
+    return render(request, 'sightings/detail.html', context)
 
 def add(request):
     return HttpResponse('add')
+
+def request_update(request):
+    if request.method == 'POST':
+        form = UpdateForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return JsonResponse({})
+        else:
+            return JsonResponse({'errors': form.errors}, status=400)
+
+    return JsonResponse({})
+
+def request_add(request):
+    if request.method == 'POST':
+        form = AddForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return JsonResponse({})
+        else:
+            return JsonResponse({'errors': form.errors}, status=400)
+
+    return JsonResponse({})
 
 def stats(request):
     squirrels = Squirrel.objects.all()
@@ -43,4 +71,6 @@ def stats(request):
             }
 
     return render(request, 'sightings/stats.html', context)
+  
 # Create your views here.
+
