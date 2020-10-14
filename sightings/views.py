@@ -9,7 +9,7 @@ from .forms import UpdateRequestForm
 def index(request):
     squirrels = Squirrel.objects.all()
     context = {'squirrels': squirrels}
-    return render(request, 'sightings/base.html', context)
+    return render(request, 'sightings/home.html', context)
 
 def map(request):
     squirrels = Squirrel.objects.all()[:100]
