@@ -4,7 +4,7 @@
   <li> Group Name: Project A </li>
   <li> Tools For Analytics </li>
   <li> Contributors: Jian Mao, Siyuan Chen</li>
-  <li> UNI: xxxx ; sc4811 </li>
+  <li> UNI: jm5159 ; sc4811 </li>
 </ul>
 
 ## Overview
