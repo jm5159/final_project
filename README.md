@@ -1,15 +1,69 @@
-# final_project
-Project Set Up 
-sudo python manage.py import_squirrel_data sightings/management/commands/rows.csv
-sudo python manage.py runserver 0.0.0.0:80
+# Squirrel Tracker Project
 
-Links Locations
+<ul>
+  <li> Group Name: Project A </li>
+  <li> Tools For Analytics </li>
+  <li> Contributors: Jian Mao, Siyuan Chen</li>
+  <li> UNI: xxxx ; sc4811 </li>
+</ul>
+
+## Overview
+<p> A web application implemented by Django framework. It has 4 pages besides homepage that allow users to view map, sightings, and edit database.
+</p>
+
+## Details
+<ul>
+  <li> Management Commands </li>
+    <p> import command for importing all the data into the project. The file should be imported from the specificed location. 
+      for example, in this project, the absolute of the file is at final_project/sightings/management/commands/rows.csv
+
+  ```sh
+  python manage.py import_squirrel_data /path/to/file.csv
+  ```
+  
+
+  Export: used to export the data in CSV format. The file path should be specified to the location of outout destination. 
+  for example, in this project, the absolute of the file is at final_project/sightings/management/commands/rows.csv
+
+   ```sh
+  python manage.py export_squirrel_data /path/to/file.csv
+   ```
+   </p>
+  <li> Web pages </li>
+    <p>
+  (1) Home page with 4 cardbox, each has a button links to the rest of web pages.  
+
+         Located at: /
+    
+  (2) shows a map that displays the recorded sightings. All coordinates are marked. 
+
+         Located at: /map
+
+  (3) shows all squirrel sightings with links to edit and add sightings
+
+         Located at: /sightings
+
+  (4) a page allows users to edit a particular squirrels.To jump to the editing page of a specific squirrel sightings,
+     you need to click the view button on each cardbox of /sightings.
+
+          Located at: /sightings/<unqiue-squirrel-id>
+
+  (5) A page to create a new sighting
+
+          Located at: /sightings/add
+
+  (6) A page displays general statistics of the sightings
+
+          Located at: /sightings/stats
+
+ </p>
+</ul>
 
 
-A description of what has been implemented
-This only needs to be a paragraph or less of a description. More is welcome but not needed.
-Your group name and section
-Eg. Project Group 51, Section 2
-A list containing the UNI for each member on the team
-Of the form: “UNIs: [uni1, uni2, uni3]”. Eg. “UNIs: [ab1234, cd7847, ef9873]”
+## Requirements
+<ul>
+  <li> Python (3.6, 3.7) </li>
+  <li> Django (3.12) </li>
+</ul>
+
 
