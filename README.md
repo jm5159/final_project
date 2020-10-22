@@ -1,4 +1,4 @@
-# Squirrel Tracker Project
+# Squirrel Tracking Web Application
 
 <ul>
   <li> Group Name: Project A </li>
