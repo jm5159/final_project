@@ -15,12 +15,15 @@
 <ul>
   <li> Management Commands </li>
     <p> import command for importing all the data into the project. The file should be imported from the specificed location. 
+      for example, in this project, the absolute of the file is at final_project/sightings/management/commands/rows.csv
 
   ```sh
   python manage.py import_squirrel_data /path/to/file.csv
   ```
+  
 
   Export: used to export the data in CSV format. The file path should be specified to the location of outout destination. 
+  for example, in this project, the absolute of the file is at final_project/sightings/management/commands/rows.csv
 
    ```sh
   python manage.py export_squirrel_data /path/to/file.csv
