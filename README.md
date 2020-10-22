@@ -31,28 +31,28 @@
    </p>
   <li> Web pages </li>
     <p>
-  1. Home page with 4 cardbox, each has a button links to the rest of web pages.  
+  (1) Home page with 4 cardbox, each has a button links to the rest of web pages.  
 
          Located at: /
     
-  2. shows a map that displays the recorded sightings. All coordinates are marked. 
+  (2) shows a map that displays the recorded sightings. All coordinates are marked. 
 
          Located at: /map
 
-  3. shows all squirrel sightings with links to edit and add sightings
+  (3) shows all squirrel sightings with links to edit and add sightings
 
          Located at: /sightings
 
-  4. a page allows users to edit a particular squirrels.To jump to the editing page of a specific squirrel sightings,
+  (4) a page allows users to edit a particular squirrels.To jump to the editing page of a specific squirrel sightings,
      you need to click the view button on each cardbox of /sightings.
 
           Located at: /sightings/<unqiue-squirrel-id>
 
-  5. A page to create a new sighting
+  (5) A page to create a new sighting
 
           Located at: /sightings/add
 
-  6. A page displays general statistics of the sightings
+  (6) A page displays general statistics of the sightings
 
           Located at: /sightings/stats
 
